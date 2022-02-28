@@ -54,6 +54,7 @@ components:
       properties:
         playerinfo:
           type: array
+          example: []
         header:
           $ref: '#/components/schemas/srb2HeaderObject'
 paths:
