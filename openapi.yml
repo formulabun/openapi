@@ -1,12 +1,37 @@
 
 openapi: '3.0.2'
 info:
-  title: API Title
+  title: Formula Bun API
   version: '1.0'
 servers:
-  - url: https://api.server.test/v1
+  - url: https://api.formulabun.club/
 paths:
-  /test:
+  /:
+    get:
+      responses:
+        '200':
+          description: OK
+  /servers:
+    get:
+      responses:
+        '200':
+          description: OK
+  /servers/{server}:
+    get:
+      responses:
+        '200':
+          description: OK
+  /servers/{server}/players:
+    get:
+      responses:
+        '200':
+          description: OK
+  /servers/{server}/server:
+    get:
+      responses:
+        '200':
+          description: OK
+  /discord:
     get:
       responses:
         '200':
