@@ -24,7 +24,7 @@ components:
               url:
                 type: string
                 example: http://api.formulabun.club/discord
-    srb2data:
+    srb2HeaderData:
       type: object
       properties:
         type:
@@ -37,23 +37,25 @@ components:
             example:
              - 0
              - 4
-    srb2playerdata:
-      title: SRB2 Player Data
+    srb2HeaderObject:
+      type: object
+      properties:
+        checksum:
+          $ref: '#/components/schemas/srb2HeaderData'
+        ack:
+          $ref: '#/components/schemas/srb2HeaderData'
+        ackret:
+          $ref: '#/components/schemas/srb2HeaderData'
+        packettype:
+          $ref: '#/components/schemas/srb2HeaderData'
+    srb2Headers:
+      title: SRB2 Headers
       type: object
       properties:
         playerinfo:
           type: array
         header:
-          type: object
-          properties:
-            checksum:
-              $ref: '#/components/schemas/srb2data'
-            ack:
-              $ref: '#/components/schemas/srb2data'
-            ackret:
-              $ref: '#/components/schemas/srb2data'
-            packettype:
-              $ref: '#/components/schemas/srb2data'
+          $ref: '#/components/schemas/srb2HeaderObject'
 paths:
   /:
     get:
@@ -97,7 +99,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/srb2playerdata'
+                $ref: '#/components/schemas/srb2Headers'
   /servers/{server}/server:
     get:
       responses:
