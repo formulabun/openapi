@@ -53,6 +53,12 @@ paths:
       responses:
         '200':
           description: OK
+      parameters:
+        - name: server
+          in: path
+          required: true
+          schema:
+            type: string
   /servers/{server}/players:
     get:
       responses:
