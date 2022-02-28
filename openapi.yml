@@ -11,6 +11,22 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  links:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        rel:
+                          type: string
+                          example: discord
+                        url:
+                          type: string
+                          example: http://api.formulabun.club/discord
   /servers:
     get:
       responses:
