@@ -5,8 +5,36 @@ info:
   version: '1.0'
 servers:
   - url: https://api.formulabun.club/
+
+
+components:
+  schemas:
+    link:
+      title: Link
+      type: object
+      properties:
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              rel:
+                type: string
+                example: discord
+              url:
+                type: string
+                example: http://api.formulabun.club/discord
 paths:
   /:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/link'
+  /servers:
     get:
       responses:
         '200':
@@ -19,19 +47,7 @@ paths:
                   links:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        rel:
-                          type: string
-                          example: discord
-                        url:
-                          type: string
-                          example: http://api.formulabun.club/discord
-  /servers:
-    get:
-      responses:
-        '200':
-          description: OK
+                      $ref: '#/components/schemas/link'
   /servers/{server}:
     get:
       responses:
