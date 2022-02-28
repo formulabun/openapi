@@ -52,9 +52,6 @@ components:
       title: SRB2 Headers
       type: object
       properties:
-        playerinfo:
-          type: array
-          example: []
         header:
           $ref: '#/components/schemas/srb2HeaderObject'
 paths:
@@ -100,12 +97,102 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/srb2Headers'
+                allOf:
+                  - properties:
+                      playerinfo:
+                        type: array
+                        example: []
+                  - $ref: '#/components/schemas/srb2Headers'
   /servers/{server}/server:
     get:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/srb2Headers'
+                  - properties:
+                      fileneeded:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            filestatus:
+                              type: integer
+                              example: 17
+                            filesize:
+                              type: integer
+                              example: 69243
+                            filename:
+                              type: string
+                              example: KL_HOSTMOD_V16.pk3
+                            checksum:
+                              $ref: '#/components/schemas/srb2HeaderData'
+                      magic:
+                        type: integer
+                        example: -1
+                      packetversion:
+                        type: integer
+                        example: 0
+                      application:
+                        type: string
+                        example: SRB2Kart
+                      version:
+                        type: integer
+                        example: 1
+                      subversion:
+                        type: integer
+                        example: 3
+                      numberofplayers:
+                        type: integer
+                        example: 0
+                      maxplayers:
+                        type: integer
+                        example: 15
+                      gametype:
+                        type: integer
+                        example: 2
+                      modifiedgame:
+                        type: integer
+                        example: 1
+                      cheatsenabled:
+                        type: integer
+                        example: 1
+                      kartvars:
+                        type: integer
+                        example: 98
+                      fileneedednum:
+                        type: integer
+                        example: 22
+                      time:
+                        type: integer
+                        example: 543
+                      leveltime:
+                        type: integer
+                        example: 803441
+                      servername:
+                        type: string
+                        example: "[EU] formulabun"
+                      mapname:
+                        type: string
+                        example: MAPKO
+                      maptitle:
+                        type: string
+                        example: The Untitled
+                      mapmd5:
+                        $ref: '#/components/schemas/srb2HeaderData'
+                      actnum:
+                        type: integer
+                        example: 0
+                      iszon:
+                        type: integer
+                        example: 1
+                      httpsource:
+                        type: string
+                        example: http://www.formulabun.club/repo
+
   /discord:
     get:
       responses:
