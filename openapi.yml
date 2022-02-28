@@ -37,17 +37,13 @@ paths:
   /servers:
     get:
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
+        '302':
+          description: Redirect
+          headers:
+            Location:
               schema:
-                type: object
-                properties:
-                  links:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/link'
+                type: string
+                example: https://api.formulabun.club/servers/main
   /servers/{server}:
     get:
       responses:
