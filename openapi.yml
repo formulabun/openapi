@@ -138,48 +138,77 @@ paths:
                         example: 0
                       application:
                         type: string
+                        description: The name of the application used to connect to the server.
                         example: SRB2Kart
                       version:
                         type: integer
+                        description: The major version of the application used to connect to the server.
                         example: 1
                       subversion:
                         type: integer
+                        description: The minor version of the application used to connect to the server.
                         example: 3
                       numberofplayers:
                         type: integer
+                        description: The number of players that are connected to the server at present.
                         example: 0
                       maxplayers:
                         type: integer
+                        description: The maximum number of players that the server will allow at any one time.
                         example: 15
                       gametype:
                         type: integer
+                        description: |
+                          The gametype that is currently active. Can be one of the following:
+
+                          | Number | Game type        |
+                          |--------|------------------|
+                          | 0      | Single Player    |
+                          | 1      | Competition      |
+                          | 2      | Race             |
+                          | 3      | Match            |
+                          | 4      | Team Match       |
+                          | 5      | Tag              |
+                          | 6      | Hide and Seek    |
+                          | 7      | Capture the Flag |
+
+                          This comes from Sonic Robo Blast 2, and may not reflect server events (e.g. Combi-Ring or Frontrun).
                         example: 2
                       modifiedgame:
                         type: integer
+                        description: |
+                          Returns 1 if the game has been modified, e.g. by way of loading mods.
                         example: 1
                       cheatsenabled:
                         type: integer
+                        description: |
+                          Returns 1 if cheats have been enabled. Presumably, if the server is Hard speed, cheats will have been used to enable that.
                         example: 1
                       kartvars:
                         type: integer
                         example: 98
                       fileneedednum:
                         type: integer
+                        description: The number of files that must be loaded in order to join the server. These files can be found at the `fileneeded` key.
                         example: 22
                       time:
                         type: integer
                         example: 543
                       leveltime:
                         type: integer
+                        description: The number of seconds since the current race began.
                         example: 803441
                       servername:
                         type: string
+                        description: The name of the server.
                         example: "[EU] formulabun"
                       mapname:
                         type: string
+                        description: The identifier of the active map.
                         example: MAPKO
                       maptitle:
                         type: string
+                        description: The title of the active map.
                         example: The Untitled
                       mapmd5:
                         $ref: '#/components/schemas/srb2HeaderData'
@@ -191,6 +220,7 @@ paths:
                         example: 1
                       httpsource:
                         type: string
+                        description: Presumably, the source used to download files listed in `fileneeded` before connection to the server.
                         example: http://www.formulabun.club/repo
 
   /discord:
